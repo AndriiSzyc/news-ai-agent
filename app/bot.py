@@ -11,9 +11,9 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 async def start_bot():
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
-    
-    # Підключаємо логіку реакцій
+
+    # підключаємо всі обробники
     dp.include_router(router)
-    
-    # Запускаємо бота
+
+    # стартуємо polling (локальний запуск)
     await dp.start_polling(bot)
