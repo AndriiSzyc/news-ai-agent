@@ -1,7 +1,11 @@
 from aiogram import Router
 from aiogram.types import CallbackQuery
 
-from app.keyboards import back_keyboard
+from aiogram.filters import Command
+from aiogram.types import Message
+
+from keyboards import back_keyboard
+from keyboards import open_news_keyboard
 
 router = Router()
 
@@ -31,3 +35,9 @@ async def back(callback: CallbackQuery):
    )
    await callback.answer()
 
+@router.message(Command("start"))
+async def start_handler(message: Message):
+   await message.answer(
+      text="Тестове меню. Обери дію:",
+      reply_markup=open_news_keyboard('test')
+      )
